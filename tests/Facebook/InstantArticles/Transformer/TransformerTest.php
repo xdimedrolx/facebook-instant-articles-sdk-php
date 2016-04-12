@@ -30,7 +30,7 @@ use Facebook\InstantArticles\Transformer\Rules\BoldRule;
 use Facebook\InstantArticles\Transformer\Rules\ImageRule;
 use Facebook\InstantArticles\Transformer\Rules\AuthorRule;
 
-use Symfony\Component\CssSelector\CssSelectorConverter;
+use Symfony\Component\CssSelector\CssSelector;
 
 class TransformerTest extends \PHPUnit_Framework_TestCase
 {

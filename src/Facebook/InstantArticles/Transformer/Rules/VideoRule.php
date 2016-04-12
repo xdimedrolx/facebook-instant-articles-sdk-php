@@ -8,7 +8,7 @@
  */
 namespace Facebook\InstantArticles\Transformer\Rules;
 
-use Symfony\Component\CssSelector\CssSelectorConverter;
+use Symfony\Component\CssSelector\CssSelector;
 
 use Facebook\InstantArticles\Elements\Video;
 use Facebook\InstantArticles\Elements\Caption;
@@ -57,8 +57,9 @@ class VideoRule extends ConfigurationSelectorRule
                 foreach ($node->childNodes as $child) {
 
                     $domXPath = new \DOMXPath($child->ownerDocument);
-                    $converter = new CssSelectorConverter();
-                    $xpath = $converter->toXPath($this->childSelector);
+//                    $converter = new CssSelectorConverter();
+//                    $xpath = $converter->toXPath($this->childSelector);
+                    $xpath = CssSelector::toXPath($this->childSelector);
                     $results = $domXPath->query($xpath, $node);
                     foreach ($results as $result) {
                         if ($result === $child) {
