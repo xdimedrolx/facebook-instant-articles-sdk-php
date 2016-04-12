@@ -12,7 +12,7 @@ use Facebook\InstantArticles\Elements\Caption;
 use Facebook\InstantArticles\Elements\Image;
 use Facebook\InstantArticles\Elements\Video;
 use Facebook\InstantArticles\Elements\InstantArticle;
-use Facebook\InstantArticles\Elements\AnimatedGif;
+use Facebook\InstantArticles\Elements\AnimatedGIF;
 use Facebook\InstantArticles\Elements\Element;
 use Facebook\InstantArticles\Validators\Type;
 
@@ -136,7 +136,7 @@ class TypeTest extends \PHPUnit_Framework_TestCase
     public function testIsInInheritance()
     {
         $result = Type::is(
-            AnimatedGif::create(),
+            AnimatedGIF::create(),
             array(
                 Image::getClassName()
             )
@@ -147,7 +147,7 @@ class TypeTest extends \PHPUnit_Framework_TestCase
     public function testIsNotInInheritance()
     {
         $result = Type::is(
-            AnimatedGif::create(),
+            AnimatedGIF::create(),
             array(
                 Video::getClassName()
             )
@@ -159,7 +159,7 @@ class TypeTest extends \PHPUnit_Framework_TestCase
     {
         try {
             $result = Type::enforce(
-                AnimatedGif::create(),
+                AnimatedGIF::create(),
                 array(
                     Video::getClassName()
                 )
@@ -223,7 +223,7 @@ class TypeTest extends \PHPUnit_Framework_TestCase
     public function testIsArrayInInheritance()
     {
         $result = Type::isArrayOf(
-            array(Image::create(), AnimatedGif::create()),
+            array(Image::create(), AnimatedGIF::create()),
             Image::getClassName()
         );
         $this->assertTrue($result);

@@ -71,6 +71,7 @@ class Client
             'app_id' => $appID,
             'app_secret' => $appSecret,
             'default_access_token' => $accessToken,
+            'default_graph_version' => 'v2.5'
         ]);
 
         return new static($facebook, $pageID, $developmentMode);

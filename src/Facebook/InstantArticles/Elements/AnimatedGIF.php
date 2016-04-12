@@ -9,7 +9,7 @@
 namespace Facebook\InstantArticles\Elements;
 
 /**
- * An AnimatedGif
+ * An AnimatedGIF
  * Also consider to use one of the other media types for an article:
  * <ul>
  *     <li>@see Audio</li>
