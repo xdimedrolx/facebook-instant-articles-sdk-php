@@ -12,9 +12,6 @@ use Facebook\InstantArticles\Elements\Caption;
 use Facebook\InstantArticles\Elements\H2;
 use Facebook\InstantArticles\Elements\Instantarticle;
 use Facebook\InstantArticles\Validators\Type;
-use Facebook\InstantArticles\Transformer\Getters\GetterFactory;
-use Facebook\InstantArticles\Transformer\Getters\StringGetter;
-use Facebook\InstantArticles\Transformer\Getters\ChildrenGetter;
 
 class H2Rule extends ConfigurationSelectorRule
 {

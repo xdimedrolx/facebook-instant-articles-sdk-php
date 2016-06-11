@@ -10,7 +10,7 @@
         "homepage": "https://github.com/facebook/facebook-instant-articles-sdk-php/contributors"
     }],
     "require": {
-        "php": ">=5.4",
+        "php": "^5.4 || ^7.0",
         "symfony/css-selector": "2.6.*",
         "facebook/php-sdk-v4": "~5.0",
         "apache/log4php": "2.3.0"
@@ -20,7 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Facebook\\InstantArticles\\": ["src/Facebook/InstantArticles/"]
+            "Facebook\\InstantArticles\\": "src/Facebook/InstantArticles/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Facebook\\InstantArticles\\": "tests/Facebook/InstantArticles/"
         }
     }
 }

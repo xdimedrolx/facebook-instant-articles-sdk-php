@@ -9,6 +9,11 @@ This SDK contains three primary components:
 `Elements` is the object tree class that represents the structure of an Instant Article. This object tree structure ensures that no invalid Instant Article HTML markup is generated. Here is a simple and complete object tree structure, starting with the `InstantArticle` class that holds the full Instant Article.
 
 ```php
+$fragment = $document->createDocumentFragment();
+$fragment->appendXML(
+    '<h1>Some custom code</h1>'.
+    '<script>alert("test");</script>'
+);
 $article =
     InstantArticle::create()
         ->withCanonicalUrl('http://foo.com/article.html')
@@ -99,10 +104,7 @@ $article =
         // Analytics
         ->addChild(
             Analytics::create()
-                ->withHTML(
-                    <h1>Some custom code</h1>
-                    <script>alert("test");</script>
-                )
+                ->withHTML($fragment)
         )
         // Footer
         ->withFooter(

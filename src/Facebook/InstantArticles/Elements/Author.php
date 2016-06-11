@@ -119,7 +119,7 @@ class Author extends Element
     }
 
     /**
-     * @param string author link url profile
+     * @return string author link url profile
      */
     public function getUrl()
     {
@@ -127,7 +127,7 @@ class Author extends Element
     }
 
     /**
-     * @param string author name
+     * @return string author name
      */
     public function getName()
     {
@@ -135,7 +135,7 @@ class Author extends Element
     }
 
     /**
-     * @param string author small introduction biography
+     * @return string author small introduction biography
      */
     public function getDescription()
     {
@@ -143,7 +143,7 @@ class Author extends Element
     }
 
     /**
-     * @param string author short text to define its contribution/role
+     * @return string author short text to define its contribution/role
      */
     public function getRoleContribution()
     {

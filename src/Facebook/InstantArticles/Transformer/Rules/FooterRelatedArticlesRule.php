@@ -10,9 +10,6 @@ namespace Facebook\InstantArticles\Transformer\Rules;
 
 use Facebook\InstantArticles\Elements\RelatedArticles;
 use Facebook\InstantArticles\Elements\Footer;
-use Facebook\InstantArticles\Transformer\Getters\GetterFactory;
-use Facebook\InstantArticles\Transformer\Getters\StringGetter;
-use Facebook\InstantArticles\Transformer\Getters\ChildrenGetter;
 
 class FooterRelatedArticlesRule extends ConfigurationSelectorRule
 {

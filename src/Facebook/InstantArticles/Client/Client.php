@@ -11,7 +11,6 @@ namespace Facebook\InstantArticles\Client;
 
 use Facebook\Facebook;
 use Facebook\InstantArticles\Elements\InstantArticle;
-use Facebook\Authentication\AccessToken;
 use Facebook\InstantArticles\Validators\Type;
 
 class Client

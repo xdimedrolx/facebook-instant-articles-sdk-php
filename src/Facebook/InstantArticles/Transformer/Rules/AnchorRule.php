@@ -10,9 +10,6 @@ namespace Facebook\InstantArticles\Transformer\Rules;
 
 use Facebook\InstantArticles\Elements\TextContainer;
 use Facebook\InstantArticles\Elements\Anchor;
-use Facebook\InstantArticles\Transformer\Getters\GetterFactory;
-use Facebook\InstantArticles\Transformer\Getters\StringGetter;
-use Facebook\InstantArticles\Transformer\Getters\ChildrenGetter;
 
 class AnchorRule extends ConfigurationSelectorRule
 {

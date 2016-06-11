@@ -15,10 +15,6 @@ use Facebook\InstantArticles\Elements\SocialEmbed;
 use Facebook\InstantArticles\Elements\Video;
 use Facebook\InstantArticles\Elements\Image;
 use Facebook\InstantArticles\Elements\Caption;
-use Facebook\InstantArticles\Elements\InstantArticle;
-use Facebook\InstantArticles\Transformer\Getters\GetterFactory;
-use Facebook\InstantArticles\Transformer\Getters\StringGetter;
-use Facebook\InstantArticles\Transformer\Getters\ChildrenGetter;
 
 class CaptionRule extends ConfigurationSelectorRule
 {

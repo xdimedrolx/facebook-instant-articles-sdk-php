@@ -8,13 +8,10 @@
  */
 namespace Facebook\InstantArticles\Elements;
 
-use Facebook\InstantArticles\Elements\Footer;
-use Facebook\InstantArticles\Elements\Paragraph;
-use Facebook\InstantArticles\Elements\RelatedArticles;
 
 class FooterTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
     }
 

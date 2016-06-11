@@ -10,10 +10,6 @@ namespace Facebook\InstantArticles\Transformer\Rules;
 
 use Facebook\InstantArticles\Elements\InstantArticle;
 use Facebook\InstantArticles\Elements\Ad;
-use Facebook\InstantArticles\Transformer\Getters\GetterFactory;
-use Facebook\InstantArticles\Transformer\Getters\StringGetter;
-use Facebook\InstantArticles\Transformer\Getters\ChildrenGetter;
-use Facebook\InstantArticles\Transformer\Getters\IntegerGetter;
 use Facebook\InstantArticles\Transformer\Warnings\InvalidSelector;
 
 class AdRule extends ConfigurationSelectorRule

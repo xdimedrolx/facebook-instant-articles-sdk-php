@@ -10,9 +10,6 @@ namespace Facebook\InstantArticles\Transformer\Rules;
 
 use Facebook\InstantArticles\Elements\RelatedArticles;
 use Facebook\InstantArticles\Elements\InstantArticle;
-use Facebook\InstantArticles\Transformer\Getters\GetterFactory;
-use Facebook\InstantArticles\Transformer\Getters\StringGetter;
-use Facebook\InstantArticles\Transformer\Getters\ChildrenGetter;
 
 class RelatedArticlesRule extends ConfigurationSelectorRule
 {

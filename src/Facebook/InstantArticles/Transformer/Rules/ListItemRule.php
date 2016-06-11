@@ -10,9 +10,6 @@ namespace Facebook\InstantArticles\Transformer\Rules;
 
 use Facebook\InstantArticles\Elements\ListElement;
 use Facebook\InstantArticles\Elements\ListItem;
-use Facebook\InstantArticles\Transformer\Getters\GetterFactory;
-use Facebook\InstantArticles\Transformer\Getters\StringGetter;
-use Facebook\InstantArticles\Transformer\Getters\ChildrenGetter;
 
 class ListItemRule extends ConfigurationSelectorRule
 {

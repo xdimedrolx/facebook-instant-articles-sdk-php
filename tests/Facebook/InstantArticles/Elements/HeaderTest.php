@@ -8,13 +8,6 @@
  */
 namespace Facebook\InstantArticles\Elements;
 
-use Facebook\InstantArticles\Elements\InstantArticle;
-use Facebook\InstantArticles\Elements\Header;
-use Facebook\InstantArticles\Elements\Time;
-use Facebook\InstantArticles\Elements\Author;
-use Facebook\InstantArticles\Elements\Image;
-use Facebook\InstantArticles\Elements\Caption;
-
 class HeaderTest extends \PHPUnit_Framework_TestCase
 {
     public function testCompleteHeader()

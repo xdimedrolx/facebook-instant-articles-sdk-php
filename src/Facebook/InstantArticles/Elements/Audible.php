@@ -8,7 +8,6 @@
  */
 namespace Facebook\InstantArticles\Elements;
 
-use Facebook\InstantArticles\Validators\Type;
 
 /**
  * Abstract class Audible

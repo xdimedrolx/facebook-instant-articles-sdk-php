@@ -9,7 +9,6 @@
 namespace Facebook\InstantArticles\Transformer\Rules;
 
 use Facebook\InstantArticles\Elements\Map;
-use Facebook\InstantArticles\Elements\Caption;
 use Facebook\InstantArticles\Elements\InstantArticle;
 
 class MapRule extends ConfigurationSelectorRule

@@ -9,15 +9,13 @@
 namespace Facebook\InstantArticles\Client;
 
 use Facebook\Facebook;
-use Facebook\InstantArticles\Elements\InstantArticle;
-use Facebook\InstantArticles\Elements\Paragraph;
 
 class HelperTest extends \PHPUnit_Framework_TestCase
 {
     private $helper;
     private $facebook;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->facebook = $this->getMockBuilder('Facebook\Facebook')
             ->disableOriginalConstructor()

@@ -80,7 +80,7 @@ class ListElement extends Element
     {
         Type::enforce($new_item, array(ListItem::getClassName(), Type::STRING));
         if (Type::is($new_item, Type::STRING)) {
-            $new_item = ListItem::create()->withText($new_item);
+            $new_item = ListItem::create()->appendText($new_item);
         }
         $this->items[] = $new_item;
 

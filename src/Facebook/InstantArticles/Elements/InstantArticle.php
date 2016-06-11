@@ -33,7 +33,7 @@ use Facebook\InstantArticles\Validators\Type;
 */
 class InstantArticle extends Element
 {
-    const CURRENT_VERSION = '1.0.2';
+    const CURRENT_VERSION = '1.0.6';
 
     /**
      * The meta properties that are used on <head>
@@ -277,10 +277,12 @@ class InstantArticle extends Element
         $head->appendChild($charset);
 
         $this->addMetaProperty('op:markup_version', $this->markupVersion);
-        $this->addMetaProperty(
-            'fb:use_automatic_ad_placement',
-            $this->isAutomaticAdPlaced ? 'true' : 'false'
-        );
+        if ($this->header && count($this->header->getAds()) > 0) {
+            $this->addMetaProperty(
+                'fb:use_automatic_ad_placement',
+                $this->isAutomaticAdPlaced ? 'true' : 'false'
+            );
+        }
 
         if ($this->style) {
             $this->addMetaProperty('fb:article_style', $this->style);
@@ -307,6 +309,17 @@ class InstantArticle extends Element
         }
         if ($this->children) {
             foreach ($this->children as $child) {
+                if (Type::is($child, TextContainer::getClassName())) {
+                    if (count($child->getTextChildren()) === 0) {
+                        continue;
+                    }
+                    elseif (count($child->getTextChildren()) === 1) {
+                        if (Type::is($child->getTextChildren()[0], Type::STRING) &&
+                            trim($child->getTextChildren()[0]) === '') {
+                            continue;
+                        }
+                    }
+                }
                 $article->appendChild($child->toDOMElement($document));
             }
             if ($this->footer) {

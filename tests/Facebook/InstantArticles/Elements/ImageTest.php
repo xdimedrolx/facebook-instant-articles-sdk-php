@@ -8,13 +8,10 @@
  */
 namespace Facebook\InstantArticles\Elements;
 
-use Facebook\InstantArticles\Elements\Image;
-use Facebook\InstantArticles\Elements\Audio;
-use Facebook\InstantArticles\Elements\Caption;
 
 class ImageTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
     }
 

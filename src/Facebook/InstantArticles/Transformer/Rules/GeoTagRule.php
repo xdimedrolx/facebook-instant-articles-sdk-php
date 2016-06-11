@@ -12,8 +12,6 @@ use Facebook\InstantArticles\Elements\Image;
 use Facebook\InstantArticles\Elements\Video;
 use Facebook\InstantArticles\Elements\Map;
 use Facebook\InstantArticles\Elements\GeoTag;
-use Facebook\InstantArticles\Elements\Caption;
-use Facebook\InstantArticles\Elements\InstantArticle;
 use Facebook\InstantArticles\Transformer\Warnings\InvalidSelector;
 
 class GeoTagRule extends ConfigurationSelectorRule

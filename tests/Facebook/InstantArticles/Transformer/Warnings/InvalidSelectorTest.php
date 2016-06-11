@@ -15,7 +15,7 @@ class InvalidSelectorTest extends \PHPUnit_Framework_TestCase
 {
     private $properties;
 
-    public function setUp()
+    protected function setUp()
     {
 
     }

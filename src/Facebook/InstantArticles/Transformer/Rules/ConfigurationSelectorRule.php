@@ -10,8 +10,6 @@ namespace Facebook\InstantArticles\Transformer\Rules;
 
 use Symfony\Component\CssSelector\CssSelector;
 use Facebook\InstantArticles\Transformer\Getters\GetterFactory;
-use Facebook\InstantArticles\Transformer\Getters\StringGetter;
-use Facebook\InstantArticles\Transformer\Getters\ChildrenGetter;
 use Facebook\InstantArticles\Validators\Type;
 
 abstract class ConfigurationSelectorRule extends Rule
@@ -54,10 +52,47 @@ abstract class ConfigurationSelectorRule extends Rule
 
     public function matchesNode($node)
     {
-        if ($this->selector === 'html' && $node->nodeName === 'html') {
+        // Only matches DOMElements (ignore text and comments)
+        if (!Type::is($node, 'DOMElement')) {
+            return false;
+        }
+
+        // Handles selector = tag
+        if ($node->nodeName === $this->selector) {
             return true;
         }
 
+        // Handles selector = .class
+        if (preg_match('/^\.[a-zA-Z][a-zA-Z0-9-]*$/', $this->selector) === 1) {
+
+            // Tries every class
+            $classNames = explode(' ', $node->getAttribute('class'));
+            foreach ($classNames as $className) {
+                if ('.' . $className === $this->selector) {
+                    return true;
+                }
+            }
+
+            // No match!
+            return false;
+        }
+
+        // Handles selector = tag.class
+        if (preg_match('/^[a-zA-Z][a-zA-Z0-9-]*(\.[a-zA-Z][a-zA-Z0-9-]*)?$/', $this->selector) === 1) {
+
+            // Tries every class
+            $classNames = explode(' ', $node->getAttribute('class'));
+            foreach ($classNames as $className) {
+                if ($node->nodeName . '.' . $className === $this->selector) {
+                    return true;
+                }
+            }
+
+            // No match!
+            return false;
+        }
+
+        // Proceed with the more expensive XPath query
         $document = $node->ownerDocument;
         $domXPath = new \DOMXPath($document);
 

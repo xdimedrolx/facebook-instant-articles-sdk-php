@@ -8,11 +8,10 @@
  */
 namespace Facebook\InstantArticles\Transformer\Rules;
 
-use Facebook\InstantArticles\Transformer\Rules\AuthorRule;
 
 class AuthorRuleTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
     }
 

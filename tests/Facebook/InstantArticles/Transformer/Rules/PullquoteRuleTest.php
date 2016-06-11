@@ -8,14 +8,12 @@
  */
 namespace Facebook\InstantArticles\Transformer\Rules;
 
-use Facebook\InstantArticles\Transformer\Rules\PullquoteRule;
-use Facebook\InstantArticles\Transformer\Rules\PullquoteCiteRule;
 use Facebook\InstantArticles\Transformer\Transformer;
 use Facebook\InstantArticles\Elements\InstantArticle;
 
 class PullquoteRuleTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         \Logger::configure(
             array(

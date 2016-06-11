@@ -8,12 +8,10 @@
  */
 namespace Facebook\InstantArticles\Elements;
 
-use Facebook\InstantArticles\Elements\RelatedArticles;
-use Facebook\InstantArticles\Elements\RelatedItem;
 
 class RelatedArticlesTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
     }
 

@@ -325,7 +325,7 @@ class Type
     {
         $within = in_array($value, $universe, true);
         if (!$within && $enforce) {
-            self::throwNotWithingException($value, $universe);
+            self::throwNotWithinException($value, $universe);
         }
 
         return $within;
@@ -345,7 +345,7 @@ class Type
         return self::isWithin($value, $universe, true);
     }
 
-    private static function throwNotWithingException($value, $universe)
+    private static function throwNotWithinException($value, $universe)
     {
       // stringify the $value parameter
         ob_start();

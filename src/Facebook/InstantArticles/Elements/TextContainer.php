@@ -32,7 +32,7 @@ abstract class TextContainer extends Element
      */
     public function appendText($child)
     {
-        Type::enforce($child, array(Type::STRING, FormattedText::getClassName()));
+        Type::enforce($child, array(Type::STRING, FormattedText::getClassName(), TextContainer::getClassName()));
         $this->textChildren[] = $child;
 
         return $this;

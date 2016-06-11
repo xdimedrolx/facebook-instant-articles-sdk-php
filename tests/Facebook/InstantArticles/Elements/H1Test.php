@@ -8,14 +8,10 @@
  */
 namespace Facebook\InstantArticles\Elements;
 
-use Facebook\InstantArticles\Elements\H1;
-use Facebook\InstantArticles\Elements\Bold;
-use Facebook\InstantArticles\Elements\Italic;
-use Facebook\InstantArticles\Elements\Anchor;
 
 class H1Test extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
     }
 

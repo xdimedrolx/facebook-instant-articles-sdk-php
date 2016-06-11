@@ -9,11 +9,7 @@
 namespace Facebook\InstantArticles\Transformer\Rules;
 
 use Facebook\InstantArticles\Elements\Header;
-use Facebook\InstantArticles\Elements\Image;
-use Facebook\InstantArticles\Elements\Caption;
 use Facebook\InstantArticles\Elements\InstantArticle;
-use Facebook\InstantArticles\Validators\Type;
-use Facebook\InstantArticles\Transformer\Transformer;
 
 class HeaderRule extends ConfigurationSelectorRule
 {

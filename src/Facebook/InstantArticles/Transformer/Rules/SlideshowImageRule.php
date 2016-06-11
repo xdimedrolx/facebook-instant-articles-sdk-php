@@ -11,9 +11,6 @@ namespace Facebook\InstantArticles\Transformer\Rules;
 use Facebook\InstantArticles\Elements\Image;
 use Facebook\InstantArticles\Elements\Caption;
 use Facebook\InstantArticles\Elements\Slideshow;
-use Facebook\InstantArticles\Transformer\Getters\GetterFactory;
-use Facebook\InstantArticles\Transformer\Getters\StringGetter;
-use Facebook\InstantArticles\Transformer\Getters\ChildrenGetter;
 use Facebook\InstantArticles\Transformer\Warnings\InvalidSelector;
 
 class SlideshowImageRule extends ConfigurationSelectorRule

@@ -9,11 +9,7 @@
 namespace Facebook\InstantArticles\Transformer\Rules;
 
 use Facebook\InstantArticles\Elements\Image;
-use Facebook\InstantArticles\Elements\Caption;
 use Facebook\InstantArticles\Elements\InstantArticle;
-use Facebook\InstantArticles\Transformer\Getters\GetterFactory;
-use Facebook\InstantArticles\Transformer\Getters\StringGetter;
-use Facebook\InstantArticles\Transformer\Getters\ChildrenGetter;
 use Facebook\InstantArticles\Transformer\Warnings\InvalidSelector;
 
 class ImageRule extends ConfigurationSelectorRule

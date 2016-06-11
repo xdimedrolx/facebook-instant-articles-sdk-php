@@ -8,13 +8,12 @@
  */
 namespace Facebook\InstantArticles\Elements;
 
-use Facebook\InstantArticles\Elements\Time;
 
 class TimeTest extends \PHPUnit_Framework_TestCase
 {
     private $timeDate;
 
-    public function setUp()
+    protected function setUp()
     {
         date_default_timezone_set('UTC');
         $this->timeDate = \DateTime::createFromFormat(

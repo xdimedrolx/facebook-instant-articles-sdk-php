@@ -90,7 +90,7 @@ class RelatedArticles extends Element
     }
 
     /**
-     * @param string the name of related articles block
+     * @return string the name of related articles block
      */
     public function getTitle()
     {

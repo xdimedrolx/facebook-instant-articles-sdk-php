@@ -27,7 +27,7 @@ class LineBreak extends FormattedText
 
     public function appendText($text)
     {
-        throw new BadMethodCallException('Cannot append text to a line break');
+        throw new \BadMethodCallException('Cannot append text to a line break');
     }
 
     /**

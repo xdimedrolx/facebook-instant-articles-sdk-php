@@ -8,9 +8,6 @@
  */
 namespace Facebook\InstantArticles\Transformer\Getters;
 
-use Facebook\InstantArticles\Validators\Type;
-use Symfony\Component\CssSelector\CssSelector;
-
 class ChildrenGetter extends ElementGetter
 {
     public function get($node)

@@ -8,14 +8,10 @@
  */
 namespace Facebook\InstantArticles\Elements;
 
-use Facebook\InstantArticles\Elements\Cite;
-use Facebook\InstantArticles\Elements\Bold;
-use Facebook\InstantArticles\Elements\Italic;
-use Facebook\InstantArticles\Elements\Anchor;
 
 class CiteTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
     }
 

@@ -13,8 +13,6 @@ use Facebook\InstantArticles\Elements\Image;
 use Facebook\InstantArticles\Elements\Video;
 use Facebook\InstantArticles\Elements\InstantArticle;
 use Facebook\InstantArticles\Elements\AnimatedGIF;
-use Facebook\InstantArticles\Elements\Element;
-use Facebook\InstantArticles\Validators\Type;
 
 /**
  *

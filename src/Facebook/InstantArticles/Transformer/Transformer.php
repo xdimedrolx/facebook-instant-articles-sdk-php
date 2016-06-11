@@ -17,8 +17,36 @@ class Transformer
 {
     private $rules = array();
     private $warnings = array();
+    private $ruleCount = 0;
 
     public $suppress_warnings = false;
+
+    private static $allClassTypes = array();
+
+    /**
+     * Gets all types a given class is, including itself, parent classes and interfaces.
+     *
+     * @param string $className - the name of the className
+     * @return array of class names the provided class name is
+     */
+    private static function getAllClassTypes($className) {
+        // Memoizes
+        if (isset(self::$allClassTypes[$className])) {
+            return self::$allClassTypes[$className];
+        }
+
+        $classParents = class_parents($className, true);
+        $classInterfaces = class_implements($className, true);
+        $classNames = array($className);
+        if ($classParents) {
+            $classNames = array_merge($classNames, $classParents);
+        }
+        if ($classInterfaces) {
+            $classNames = array_merge($classNames, $classInterfaces);
+        }
+        self::$allClassTypes[$className] = $classNames;
+        return $classNames;
+    }
 
     public function getWarnings()
     {
@@ -28,8 +56,21 @@ class Transformer
     public function addRule($rule)
     {
         Type::enforce($rule, Rule::getClassName());
-        // Adds in reversed order for bottom-top processing rules
-        array_unshift($this->rules, $rule);
+
+        // Use context class as a key
+        $contexts = $rule->getContextClass();
+
+        // Handles multiple contextes
+        if (!is_array($contexts)) {
+            $contexts = array($contexts);
+        }
+
+        foreach ($contexts as $context) {
+            if (!isset($this->rules[$context])) {
+                $this->rules[$context] = array();
+            }
+            $this->rules[$context][$this->ruleCount++] = $rule;
+        }
     }
 
     public function addWarning($warning)
@@ -40,8 +81,8 @@ class Transformer
     public function transform($context, $node)
     {
         if (Type::is($context, InstantArticle::getClassName())) {
-            $context->addMetaProperty('op:transformer', 'facebook-instant-articles-sdk-php');
-            $context->addMetaProperty('op:transformer:version', InstantArticle::CURRENT_VERSION);
+            $context->addMetaProperty('op:generator:transformer', 'facebook-instant-articles-sdk-php');
+            $context->addMetaProperty('op:generator:transformer:version', InstantArticle::CURRENT_VERSION);
         }
 
         $log = \Logger::getLogger('facebook-instantarticles-transformer');
@@ -59,13 +100,36 @@ class Transformer
             foreach ($node->childNodes as $child) {
                 $matched = false;
                 $log->debug("===========================");
-                foreach ($this->rules as $rule) {
-                    if ($rule->matches($context, $child)) {
+
+                // Get all classes and interfaces this context extends/implements
+                $contextClassNames = self::getAllClassTypes($context->getClassName());
+
+                // Look for rules applying to any of them as context
+                $matchingContextRules = array();
+                foreach ($contextClassNames as $contextClassName) {
+                    if (isset($this->rules[$contextClassName])) {
+                        // Use array union (+) instead of merge to preserve
+                        // indexes (as they represent the order of insertion)
+                        $matchingContextRules = $matchingContextRules + $this->rules[$contextClassName];
+                    }
+                }
+
+                // Sort by insertion order
+                ksort($matchingContextRules);
+
+                // Process in reverse order
+                $matchingContextRules = array_reverse($matchingContextRules);
+                foreach ($matchingContextRules as $rule) {
+                    // We know context was matched, now check if it matches the node
+                    if ($rule->matchesNode($child)) {
                         $current_context = $rule->apply($this, $current_context, $child);
                         $matched = true;
+
+                        // Just a single rule for each node, so move on
                         break;
                     }
                 }
+
                 if (!$matched &&
                     !($child->nodeName === '#text' && trim($child->textContent) === '') &&
                     !($child->nodeName === '#comment') &&
@@ -114,6 +178,7 @@ class Transformer
     public function resetRules()
     {
         $this->rules = array();
+        $this->ruleCount = 0;
     }
 
     /**
@@ -123,7 +188,17 @@ class Transformer
      */
     public function getRules()
     {
-        return $this->rules;
+        // Do not expose internal map, just a simple array
+        // to keep the interace backwards compatible.
+        $flatten_rules = array();
+        foreach ($this->rules as $ruleset) {
+            foreach ($ruleset as $priority => $rule) {
+                $flatten_rules[$priority] = $rule;
+            }
+        }
+
+        ksort($flatten_rules);
+        return $flatten_rules;
     }
 
     /**
@@ -133,7 +208,12 @@ class Transformer
      */
     public function setRules($rules)
     {
+        // Do not receive internal map, just a plain list
+        // to keep the interace backwards compatible.
         Type::enforceArrayOf($rules, Rule::getClassName());
-        $this->rules = $rules;
+        $this->resetRules();
+        foreach ($rules as $rule) {
+            $this->addRule($rule);
+        }
     }
 }
